@@ -63,7 +63,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 8px;
     overflow: hidden;
-    background: #555;
+    background: transparent;
 }
 
 /* Картинки */
@@ -101,33 +101,44 @@
         text-align: center;
     }
 
-    /* Адаптивність для мобільних */
-    @media (max-width: 768px) {
-        .main {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .side-images {
-            flex-direction: row;
-            gap: 10px;
-        }
-
-        .side-images .image-box {
-            width: 80px;
-            height: 80px;
-            font-size: 12px;
-        }
-
-        .header h1 {
-            font-size: 22px;
-        }
-
-        .text-frame {
-            max-width: 300px;
-            padding: 15px;
-        }
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;      /* Вертикальна колонка */
+        align-items: center;         /* Центрування по горизонталі */
+        padding: 10px;
+        gap: 20px;
     }
+
+    .text-frame {
+        max-width: 90%;
+        min-width: auto;
+        padding: 15px;
+        order: 1;                    /* Текст під логотипом */
+        width: 100%;
+    }
+
+    .side-images {
+        flex-direction: row;         /* Картинки в ряд */
+        gap: 10px;
+        order: 2;                    /* Картинки під текстом */
+        width: 100%;
+        justify-content: center;
+        background: transparent;     /* Фон контейнера збігається з фоном сторінки */
+        padding: 10px 0;
+    }
+
+    .side-images .image-box {
+        width: 80px;
+        height: 80px;
+        font-size: 12px;
+        background: transparent;     /* Фон картинки прозорий, видно фон сторінки */
+    }
+
+    .side-images .image-box img {
+        object-fit: contain;         /* Картинка вписана в квадрат */
+        background: transparent;     /* Порожні зони збігаються з фоном сторінки */
+    }
+}
     
 
 /* затемнення фону */
